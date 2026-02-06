@@ -1,0 +1,30 @@
+    <script>
+        // NO button escape
+        const noBtn = document.getElementById("no");
+        noBtn.addEventListener("mouseover", () => {
+          const x = Math.random() * 200 - 100;
+          const y = Math.random() * 50;
+          noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // Falling hearts generator
+        function createHeart() {
+          const heart = document.createElement("div");
+          heart.classList.add("heart");
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // between 3 and 5 seconds
+          heart.innerText = "❤️";
+          document.body.appendChild(heart);
+
+          setTimeout(() => {
+            heart.remove();
+          }, 5000); // Remove heart after it falls off screen
+        }
+
+        setInterval(createHeart, 300); // Create a new heart every 300ms
+
+        // Yes button clicked
+        function yesClicked() {
+          alert("Yayy! I love you! 🥰");
+        }
+    </script>
